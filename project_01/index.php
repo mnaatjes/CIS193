@@ -1,7 +1,7 @@
 <?php
     /**
      * Requires
-     * Commit after removing test_repo from workspace!
+     * Commit after adding src folder to workspace
      */
-    echo 'My spoon is TOOOOOO BIG!';
+    echo 'Badger, badger, badger, barger... mushroom! mushroom!';
 ?>
