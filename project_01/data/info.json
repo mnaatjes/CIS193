@@ -1,0 +1,23 @@
+[
+    {
+      "name": "John Doe",
+      "phone": "555-123-4567",
+      "fax": "555-987-6543",
+      "email": "john.doe@example.com",
+      "address": "123 Main St, Anytown, CA 12345"
+    },
+    {
+      "name": "Jane Smith",
+      "phone": "555-987-6543",
+      "fax": "555-123-4567",
+      "email": "jane.smith@example.com",
+      "address": "456 Oak Ave, Someville, NY 56789"
+    },
+    {
+      "name": "David Lee",
+      "phone": "555-555-5555",
+      "fax": "555-555-5555",
+      "email": "david.lee@example.com", 
+      "address": "789 Pine Rd, Othertown, TX 78901" 
+    }
+]
