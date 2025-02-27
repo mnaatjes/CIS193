@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": 742198365012,
+    "brand": "Scotts Turf Builder",
+    "type": "Sun & Shade Mix",
+    "price_per_lb": 3.99,
+    "package_size_lb": 5,
+    "total_price": 19.95
+  },
+  {
+    "id": 187654920381,
+    "brand": "Pennington",
+    "type": "Smart Seed Dense Shade",
+    "price_per_lb": 4.49,
+    "package_size_lb": 7,
+    "total_price": 31.43
+  },
+  {
+    "id": 930284716598,
+    "brand": "Scotts EZ Seed",
+    "type": "Patch & Repair",
+    "price_per_lb": 6.79,
+    "package_size_lb": 3.75,
+    "total_price": 25.46
+  },
+  {
+    "id": 561739284075,
+    "brand": "Jonathan Green",
+    "type": "Black Beauty Ultra",
+    "price_per_lb": 5.99,
+    "package_size_lb": 25,
+    "total_price": 149.75
+  },
+  {
+    "id": 209865173426,
+    "brand": "GreenView",
+    "type": "Fairway Formula Sun & Shade",
+    "price_per_lb": 4.99,
+    "package_size_lb": 20,
+    "total_price": 99.80
+  }
+]
