@@ -6,7 +6,7 @@
  */
 import { createCustomForm } from "../../src/components/createCustomForm.js";
 import { createFormElement } from "../../src/elements/createFormElement.js";
-import { createSelectElement, testProps } from "../../src/elements/createSelectElement.js";
+import { createSelectElement } from "../../src/elements/createSelectElement.js";
 /**
  * @const {HTMLElement} root
  */
@@ -41,24 +41,6 @@ const width = createFormElement(
     }
 );
 /**
- * Generate and append form element
- */
-const seedForm = createCustomForm({
-        tagName: 'seed-form',
-        action: './calc.php',
-        mode: 'fetch',
-        enctype: 'json',
-        styles: '../../../../../src/shared-library/styles/css/main.css'
-    },
-    [
-        length,
-        width
-    ],
-    function(data){
-        console.log(data);
-});
-root.appendChild(seedForm);
-/**
  * Fetch Seed Data
  */
 fetch('./seeds.php', {
@@ -70,9 +52,32 @@ fetch('./seeds.php', {
         throw new Error('Could not connect!', res.status);
     }
     return res.json();
-}).then((data) => {
-    console.log(data);
+}).then((seedData) => {
+    /**
+     * Create Select element and populate from seed data
+     */
+    const select = createSelectElement(
+        {name:'seeds'},
+        seedData.map(seed => {
+            return {value: seed.id, text: `${seed.type}: $${seed.price_per_lb}/lb`}
+        })
+    );
+    /**
+     * Generate and append form element
+     */
+    const seedForm = createCustomForm({
+        tagName: 'seed-form',
+        action: './calc.php',
+        mode: 'fetch',
+        enctype: 'json',
+        styles: '../../../../../src/shared-library/styles/css/main.css'
+    },
+    [length, width, select],
+    function(data){
+        console.log(data);
+    });
+    /**
+     * Append form to root
+     */
+    root.appendChild(seedForm);
 })
-
-const select = createSelectElement({}, [{name: '', value: '', props: {}}]);
-const test = testProps({})

@@ -66,3 +66,5 @@ Stack trace:
 #2 /mnt/f/cis_projects/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(15): Request->__construct()
 #3 {main}
   thrown in /mnt/f/cis_projects/dev/KVCC/CIS193/project_02/src/request.php on line 129
+[02-Mar-2025 15:29:27 America/New_York] PHP Warning:  A non-numeric value encountered in /mnt/f/cis_projects/dev/KVCC/CIS193/project_02/views/seeds/calc.php on line 20
+[02-Mar-2025 15:29:27 America/New_York] PHP Warning:  A non-numeric value encountered in /mnt/f/cis_projects/dev/KVCC/CIS193/project_02/views/seeds/calc.php on line 20

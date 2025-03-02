@@ -77,7 +77,7 @@ export function applyElementProps(element, properties, mode='set'){
     /**
      * Destructure Attributes object
      */
-    const { id, styles, classList, textContent, pattern, ...attributes} = properties;
+    const { id, styles, classList, textContent, pattern, innerHTML, ...attributes} = properties;
     /**
      * Set Attributes
      */
@@ -93,6 +93,12 @@ export function applyElementProps(element, properties, mode='set'){
          */
         if(textContent !== undefined){
             element.textContent = textContent;
+        }
+        /**
+         * Validate and apply innerHTML
+         */
+        if(innerHTML !== undefined){
+            element.innerHTML = innerHTML;
         }
         /**
          * Validate and Apply Styles
