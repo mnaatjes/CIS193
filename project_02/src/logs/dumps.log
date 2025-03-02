@@ -1,0 +1,142 @@
+Timestamp: 2025-03-01 19:46:39
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(126)
+Message: NULL 
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:47:14
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(126)
+Message: NULL 
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:47:41
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(126)
+Message:  
+string(4) "NULL"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:48:18
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(114)
+Message: json 
+string(5) "stuff"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:48:18
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(127)
+Message:  
+string(4) "NULL"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:48:39
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(114)
+Message: json 
+string(2) """"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:48:39
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(127)
+Message:  
+string(6) "string"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:49:46
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(114)
+Message: json 
+string(6) "string"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:49:46
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(127)
+Message:  
+string(6) "string"
+
+---------------------------------------------------------------------------
+
+Timestamp: 2025-03-01 19:53:52
+Filepath:/var/www/dev/KVCC/CIS193/project_02/views/seeds/seeds.php(22)
+Message: Seed Data 
+array(5) {
+  [0]=>
+  array(6) {
+    ["id"]=>
+    int(742198365012)
+    ["brand"]=>
+    string(19) "Scotts Turf Builder"
+    ["type"]=>
+    string(15) "Sun & Shade Mix"
+    ["price_per_lb"]=>
+    float(3.99)
+    ["package_size_lb"]=>
+    int(5)
+    ["total_price"]=>
+    float(19.95)
+  }
+  [1]=>
+  array(6) {
+    ["id"]=>
+    int(187654920381)
+    ["brand"]=>
+    string(10) "Pennington"
+    ["type"]=>
+    string(22) "Smart Seed Dense Shade"
+    ["price_per_lb"]=>
+    float(4.49)
+    ["package_size_lb"]=>
+    int(7)
+    ["total_price"]=>
+    float(31.43)
+  }
+  [2]=>
+  array(6) {
+    ["id"]=>
+    int(930284716598)
+    ["brand"]=>
+    string(14) "Scotts EZ Seed"
+    ["type"]=>
+    string(14) "Patch & Repair"
+    ["price_per_lb"]=>
+    float(6.79)
+    ["package_size_lb"]=>
+    float(3.75)
+    ["total_price"]=>
+    float(25.46)
+  }
+  [3]=>
+  array(6) {
+    ["id"]=>
+    int(561739284075)
+    ["brand"]=>
+    string(14) "Jonathan Green"
+    ["type"]=>
+    string(18) "Black Beauty Ultra"
+    ["price_per_lb"]=>
+    float(5.99)
+    ["package_size_lb"]=>
+    int(25)
+    ["total_price"]=>
+    float(149.75)
+  }
+  [4]=>
+  array(6) {
+    ["id"]=>
+    int(209865173426)
+    ["brand"]=>
+    string(9) "GreenView"
+    ["type"]=>
+    string(27) "Fairway Formula Sun & Shade"
+    ["price_per_lb"]=>
+    float(4.99)
+    ["package_size_lb"]=>
+    int(20)
+    ["total_price"]=>
+    float(99.8)
+  }
+}
+
+---------------------------------------------------------------------------
+

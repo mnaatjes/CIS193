@@ -7,16 +7,16 @@
      * Enable Errors
      */
     require_once '../../../../src/shared-library/php/utils/utils-main.php';
-    enableErrors();
+    require_once '../src/request.php';
     /**
-     * Catch POST request
+     * Constants
      */
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $data = $_POST;
-        header('Content-Type: application/json');
-        echo json_encode([
-            'msg' => 'Connection OK!',
-            'test' => $data
-        ]);
-    }
+    define('FP_DUMP_LOG', '../src/logs/dumps.log');
+    define('FP_ERROR_LOG', '../src/logs/errors.log');
+    log_errors();
+
+    $req = new Request('POST');
+    $req->processForm(function($data, $errors){
+        return $data;
+    });
 ?>

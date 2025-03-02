@@ -4,20 +4,20 @@
  */
 /*----------------------------------------------------------*/
 /**
- * @function validateFormAttributes
- * @param {Object} formAttributes
+ * @function validateConfig
+ * @param {Object} formConfig
  * @returns {Object | Error}
  */
 /*----------------------------------------------------------*/
-function validateFormAttributes(formAttributes){
+function validateConfig(formConfig){
     /**
-     * Check formAttributes is object
+     * Check formConfig is object
      * Check that attributes contains Action
      */
-    if(typeof formAttributes !== 'object'){
+    if(typeof formConfig !== 'object'){
         throw new TypeError('Form Attributes MUST be an Object!');
     }
-    if(!formAttributes.hasOwnProperty('action')){
+    if(!formConfig.hasOwnProperty('action')){
         throw new Error('Form Attributes Object missing "Action" property!');
     }
     /**
@@ -28,18 +28,121 @@ function validateFormAttributes(formAttributes){
         method: 'POST', 
         target: '_self', 
         enctype: "application/x-www-form-urlencoded",
+        mode: 'submit',
         novalidate: true
     }
-    return {...defaultAttributes, ...formAttributes};
+    /**
+     * @const {Object} formEnctypes
+     */
+    const formEnctypes = [
+        {
+            enctype: "application/x-www-form-urlencoded",
+            formType: 'default'
+        },
+        {
+            enctype: "text/plain",
+            formType: 'text'
+        },
+        {
+            enctype: "application/json",
+            formType: 'json'
+        },
+        {
+            enctype: "application/xml",
+            formType: "xml"
+        },
+        {
+            enctype: "multipart/form-data",
+            formType: 'file'
+        }
+    ];
+    /**
+     * Validate Enctype
+     */
+    if(formConfig.enctype !== undefined && typeof formConfig.enctype === 'string'){
+        /**
+         * Check valid strings
+         * 1) Check if enctype entered
+         * 2) Check if formType entered
+         */
+        if(formConfig.enctype.includes('/')){
+            /**
+             * String contains slash, check against valid enctypes
+             */
+            if(!formEnctypes.map(obj => obj.enctype).find(val => val === formConfig.enctype)){
+                throw new Error(`Invalid Enctype!\n"${formConfig.enctype}" is not valid\nPlease select from the following:\n${JSON.stringify(formEnctypes, null, 2)}`);
+            }
+        } else if(formConfig.enctype.trim() !== '') {
+            /**
+             * Search for enctype from formType string
+             */
+            const search = formEnctypes.find(obj => {
+                return obj.formType === formConfig.enctype.trim();
+            });
+            if(search !== undefined && typeof search === 'object'){
+                /**
+                 * Set Enctype from formType
+                 */
+                formConfig.enctype = search.enctype;
+            } else {
+                throw new Error(`Invalid Enctype!\n"${formConfig.enctype}" is not valid\nPlease select from the following:\n${JSON.stringify(formEnctypes, null, 2)}`);
+            }
+        }
+        /**
+         * Check that enctype for JSON and mode match
+         * enctype JSON can ONLY be used with fetch API
+         */
+        if(formConfig.enctype.includes('json')){
+            /**
+             * For mode: undefined - Set as fetch and warn user
+             */
+            if(formConfig.mode === undefined){
+                formConfig.mode = 'fetch';
+                console.warn(`Form Configuration "mode" not defined.\nMode set to ${formConfig.mode} for enctype "${formConfig.enctype}"`);
+            } else if(formConfig.mode === 'submit'){
+                /**
+                 * Enctype application/json can only be used with fetch API
+                 * Form will be set to default values for 'mode' and 'enctype'
+                 */
+                formConfig.mode     = 'submit';
+                formConfig.enctype  = formEnctypes.find((obj) => obj.formType === 'default').enctype;
+                console.warn(`Cannot use mode: "submit" with enctype: "application/json"\nConfig reset to:\n${JSON.stringify({mode: formConfig.mode, enctype: formConfig.enctype}, null, 2)}`);
+
+            } else if(typeof formConfig.mode === 'string' && !['fetch', 'submit'].includes(formConfig.mode.trim())){
+                throw new Error(`Invalid Form Configuration "mode"!\nMode must be "submit" or "fetch"!`);
+            }
+        }
+    }
+    /**
+     * Consolidate and return form configuration
+     */
+    return {...defaultAttributes, ...formConfig};
 }
 /*----------------------------------------------------------*/
 /**
- * @function validateFormElements
+ * @function validateTagName
+ * @param {String} tagName 
+ * @returns {String} String of element tag
+ * @throws {TypeError} - Must be a string and contain a hyphen
+ */
+/*----------------------------------------------------------*/
+function validateTagName(tagName){
+    if(typeof tagName !== 'string'){
+        throw new TypeError(`TagName type of "${typeof tagName}" is invalid. Type must be string`);
+    }
+    if(!tagName.includes('-')){
+        throw new TypeError(`Invalid tagName! "${tagName}" must include a hyphen (-)!`);
+    }
+    return tagName;
+}
+/*----------------------------------------------------------*/
+/**
+ * @function validateElements
  * @param {formElements}
  * @returns {Object | Error}
  */
 /*----------------------------------------------------------*/
-function validateFormElements(formElements){
+function validateElements(formElements){
     /**
      * Validate Form Elements
      */
@@ -65,30 +168,32 @@ function validateFormElements(formElements){
  *      Handles Client-Side Validation
  *      Allows for direct submit action or AJAX request
  * @function createCustomForm
- * @param {String | HTMLElement} root - Root HTML Element to append form. String must be an Element ID, or provide the element node itself
- * @param {String} componentName - Name for Form Component when defining custom element
- * @param {Object} formAttributes - Attributes to append to form element
- * @param {String} formAttributes.action - filepath
- * @param {String} formAttributes.method - Default === POST
- * @param {String} formAttributes.target - Default === _self
- * @param {String} formAttributes.enctype - Default === x-www-form-urlencoded
- * @param {Boolean} formAttributes.novalidate - Default === true
+ * @param {Object} formConfig - Attributes to append to form element and configuration of form handling
+ * @param {String} formConfig.tagName - TagName to define the component. Must include a hyphen!
+ * @param {String} formConfig.action - filepath
+ * @param {String} formConfig.method - Default === POST
+ * @param {String} [formConfig.target] - Default === _self
+ * @param {String} [formConfig.enctype] - Default === x-www-form-urlencoded; Values can be enctype or fileType ['default', 'json', 'xml', 'text', 'file']
+ * @param {String} [formConfig.mode] - Values: 'Submit' or 'Fetch' dictates the Form Action after validation; Default === 'submit'
+ * @param {Boolean} [formConfig.novalidate] - Default === true
+ * @param {String | Object} [formConfig.styles] - String filepath to link a Stylesheet or an Object of style properties to append to Form element
  * @param {Array} formElements - Array of HTMLElements for the Form
- * @param {String | Object} styles - String filepath to link a Stylesheet or an Object of style properties to append to Form element
- * @param {String} mode - Values: 'Submit' or 'Fetch' dictates the Form Action after validation; Default === 'submit'
  * @param {FormCallback} [callback] - Callback function executed on mode == 'fetch'; Default === undefined
+ * @returns {HTMLElement} Custom form element
+ * 
+ * @version 2.0.0
  */
 /*----------------------------------------------------------*/
-export function createCustomForm(root, componentName, formAttributes={}, formElements=[], styles={}, mode='submit', callback=undefined){
+export function createCustomForm(formConfig={}, formElements=[], callback=undefined){
     /**
      * Validate Parameters
      */
-    const formProps     = validateFormAttributes(formAttributes);
-    const formItems     = validateFormElements(formElements);
+    const config    = validateConfig(formConfig);
+    const elements  = validateElements(formElements);
     /**
      * Define custom element
      */
-    customElements.define(componentName, class extends HTMLElement {
+    customElements.define(validateTagName(formConfig.tagName), class extends HTMLElement {
         /*----------------------------------------------------------*/
         /**
          * Build Custom Form Component
@@ -109,22 +214,31 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
             /**
              * Append Form to Shadow Root
              */
-            this.#buildForm(formProps, formItems, styles);
+            this.#buildForm({
+                    action: config.action,
+                    method: config.method,
+                    enctype: config.enctype,
+                    target: config.target,
+                    novalidate: config.novalidate
+                }, 
+                config.styles,
+                elements
+            );
             /**
              * Enable Form Validation
              */
-            this.#validateForm(mode, callback);
+            this.#validateForm(callback);
         }
         /*----------------------------------------------------------*/
         /**
          * @method buildForm
          * @private
-         * @property {Object} formProperties
+         * @property {Object} properties
+         * @param {Object} styles
          * @param {Array} elementsList
-         * @param {String | Object} styles
          */
         /*----------------------------------------------------------*/
-        #buildForm(formProperties, elementsList, styles){
+        #buildForm(properties, styles, elementsList){
             /**
              * Create Form Element
              */
@@ -132,8 +246,8 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
             /**
              * Apply Form Attributes
              */
-            for(const prop in formProperties){
-                form.setAttribute(prop, formProperties[prop]);
+            for(const prop in properties){
+                form.setAttribute(prop, properties[prop]);
             }
             /**
              * Append Elements to Form
@@ -197,12 +311,13 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
          * @method validateForm
          * @private
          * @listens shadowRoot[form]#submit
-         * @param {String} mode 
          * @param {FormCallback} callback
          * @returns {Void}
+         * 
+         * TODO: Restructure validation to work with ValidityState (ele.validity) object
          */
         /*----------------------------------------------------------*/
-        #validateForm(mode, callback){
+        #validateForm(callback){
             this.shadowRoot.querySelector('form').addEventListener('submit', (e) => {
                 /**
                  * Prevent Default Behavior
@@ -322,7 +437,7 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
                     /**
                      * Run Action Script
                      */
-                    this.#performAction(form, mode, callback);
+                    this.#performAction(form, callback);
                 }
             })
         }
@@ -331,42 +446,53 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
          * @method performAction
          * @private
          * @param {HTMLElement} form - Form Element
-         * @param {String} mode - Values: 'submit' (default) or 'fetch'
          * @param {FormCallback} [callback] - Callback used for fetch
-         * @property {Object} [formProps] - Form Properties passed to fetch request
+         * @property {Object} config - Form Properties passed to fetch request
          * @returns {Void}
          */
         /*----------------------------------------------------------*/
-        #performAction(form, mode, callback=undefined){
+        #performAction(form, callback=undefined){
             /**
              * Validate mode
              */
-            if(mode !== 'submit' && mode !== 'fetch'){
-                throw new Error(`Value for "mode" must be "submit" or "fetch"! "${mode}" is invalid`);
+            if(config.mode !== 'submit' && config.mode !== 'fetch'){
+                throw new Error(`Value for "mode" must be "submit" or "fetch"! "${config.mode}" is invalid`);
+            }
+            /**
+             * Grab Form Data
+             * 1) Check enctype to format FormData
+             * 2) Format FormData if necessary
+             */
+            const formData = new FormData(form);
+            const data     = {};
+            if(config.enctype.includes('json')){
+                // format json data
+                formData.forEach((val, key) => {
+                    data[key] = val;
+                });
             }
             /**
              * Determine mode of action
              */
-            if(mode === 'submit'){
+            if(config.mode === 'submit'){
                 /**
                  * Submit Form
                  */
                 form.submit();
-            } else if (mode === 'fetch'){
+            } else if (config.mode === 'fetch'){
                 /**
                  * Make AJAX Request for data and perform callback
                  */
-                console.log('Client Side Validation Successful!');
-                /**
-                 * Grab Form Data
-                 */
-                const formData = new FormData(form);
+                //console.info('Client Side Validation Successful!');
                 /**
                  * Fetch
                  */
-                fetch(formProps.action, {
-                    method: formProps.method,
-                    body: formData
+                fetch(config.action, {
+                    method: config.method,
+                    headers: {
+                        'Content-Type': config.enctype
+                    },
+                    body: config.enctype.includes('json') ? JSON.stringify(data) : formData
                 })
                 .then(response => {
                     if(!response.ok){
@@ -378,6 +504,9 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
                      * Execute Callback Function
                      */
                     callback(data);
+                })
+                .catch((error) => {
+                    console.error(error);
                 });
             }
         }
@@ -385,15 +514,7 @@ export function createCustomForm(root, componentName, formAttributes={}, formEle
     /*----------------------------------------------------------*/
 
     /**
-     * Declare component
-     * Attach Custom Form Component to DOM
+     * Declare and Return Component
      */
-    const formComponent = document.createElement(componentName);
-    if(root instanceof HTMLElement){
-        root.appendChild(formComponent);
-    } else if(typeof root === 'string') {
-        document.getElementById(root).appendChild(formComponent);
-    } else {
-        throw new TypeError('Invalid Type: Root parameter must be either an HTMLElement or String for an element ID');
-    }
+    return document.createElement(config.tagName);
 }

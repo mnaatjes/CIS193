@@ -1,4 +1,4 @@
-import { appendStyles } from '../utils.js';
+import { appendStyles } from '../../utils.js';
 /**
  * @type {HTMLElement} Carousel
  */
