@@ -1,0 +1,98 @@
+[
+{
+    "breed": "Labrador Retriever",
+    "age": 3,
+    "color": "Yellow",
+    "weight": 70,
+    "temperament": ["Friendly", "Energetic", "Loyal"],
+    "is_adopted": true
+},
+{
+    "breed": "German Shepherd",
+    "age": 5,
+    "color": "Black and Tan",
+    "weight": 85,
+    "temperament": ["Intelligent", "Protective", "Trainable"],
+    "is_adopted": false
+},
+{
+    "breed": "Golden Retriever",
+    "age": 2,
+    "color": "Golden",
+    "weight": 65,
+    "temperament": ["Gentle", "Affectionate", "Playful"],
+    "is_adopted": true
+},
+{
+    "breed": "Bulldog",
+    "age": 4,
+    "color": "White and Brown",
+    "weight": 50,
+    "temperament": ["Docile", "Friendly", "Courageous"],
+    "is_adopted": false
+},
+{
+    "breed": "Beagle",
+    "age": 1,
+    "color": "Tricolor",
+    "weight": 25,
+    "temperament": ["Curious", "Happy", "Companionable"],
+    "is_adopted": true
+},
+{
+    "breed": "Poodle",
+    "age": 6,
+    "color": "Black",
+    "weight": 55,
+    "temperament": ["Intelligent", "Active", "Elegant"],
+    "is_adopted": false
+},
+{
+    "breed": "Rottweiler",
+    "age": 3,
+    "color": "Black and Mahogany",
+    "weight": 100,
+    "temperament": ["Loyal", "Confident", "Guard Dog"],
+    "is_adopted": true
+},
+{
+    "breed": "Yorkshire Terrier",
+    "age": 7,
+    "color": "Blue and Tan",
+    "weight": 7,
+    "temperament": ["Affectionate", "Sprightly", "Intelligent"],
+    "is_adopted": false
+},
+{
+    "breed": "Boxer",
+    "age": 2,
+    "color": "Fawn",
+    "weight": 70,
+    "temperament": ["Playful", "Energetic", "Loyal"],
+    "is_adopted": true
+},
+{
+    "breed": "Dachshund",
+    "age": 4,
+    "color": "Red",
+    "weight": 11,
+    "temperament": ["Clever", "Stubborn", "Devoted"],
+    "is_adopted": false
+},
+{
+    "breed": "Shih Tzu",
+    "age": 8,
+    "color": "Gold and White",
+    "weight": 12,
+    "temperament": ["Affectionate", "Playful", "Outgoing"],
+    "is_adopted": true
+},
+{
+    "breed": "Australian Shepherd",
+    "age": 2,
+    "color": "Blue Merle",
+    "weight": 55,
+    "temperament": ["Intelligent", "Active", "Loyal"],
+    "is_adopted": false
+}
+]

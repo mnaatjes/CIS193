@@ -5,7 +5,9 @@
  * @description Main js file for seeds calculator
  */
 import { createCustomForm } from "../../src/components/createCustomForm.js";
+import { createElement } from "../../src/elements/createElement.js";
 import { createFormElement } from "../../src/elements/createFormElement.js";
+import { createLabelElement } from "../../src/elements/createLabelElement.js";
 import { createSelectElement } from "../../src/elements/createSelectElement.js";
 /**
  * @const {HTMLElement} root
@@ -23,10 +25,11 @@ const length = createFormElement(
     {
         name: 'length',
         placeholder: 'Length',
-        min: 0.01,
+        min: 1,
         max: 9999999,
         maxlength: 8,
-        type: 'number'
+        type: 'number',
+        required: true
     }
 );
 const width = createFormElement(
@@ -34,10 +37,11 @@ const width = createFormElement(
     {
         name: 'width',
         placeholder: 'Width',
-        min: 0.01,
+        min: 1,
         max: 9999999,
         maxlength: 8,
-        type: 'number'
+        type: 'number',
+        required: true
     }
 );
 /**
@@ -59,7 +63,7 @@ fetch('./seeds.php', {
     const select = createSelectElement(
         {name:'seeds'},
         seedData.map(seed => {
-            return {value: seed.id, text: `${seed.type}: $${seed.price_per_lb}/lb`}
+            return {value: seed.price_per_lb, text: `${seed.type}: $${seed.price_per_lb}/lb`}
         })
     );
     /**
@@ -70,11 +74,39 @@ fetch('./seeds.php', {
         action: './calc.php',
         mode: 'fetch',
         enctype: 'json',
-        styles: '../../../../../src/shared-library/styles/css/main.css'
+        styles: '../../src/main.css'
     },
-    [length, width, select],
+    /**
+     * Append form elements
+     */
+    [
+        createLabelElement('length', 'Enter Length of Yard'),
+        length, 
+        createLabelElement('width', 'Enter Width of Yard'),
+        width,
+        createLabelElement('seeds', 'Select Seed Brand and Cost/lb'),
+        select
+    ],
+    /**
+     * Handle submit data
+     */
     function(data){
-        console.log(data);
+        /**
+         * Check if div exists
+         */
+        if(display.children.length > 0){
+            display.innerHTML = '';
+        }
+        /**
+         * Print data to response area
+         */
+        const items = createElement('div', {}, [
+            createElement('h4', {textContent: 'Original Value:'}),
+            createElement('p', {textContent: '$' + data.original.toFixed(2), styles: {marginBottom: 12}}),
+            createElement('h4', {textContent: 'Adjusted Value:'}),
+            createElement('p', {textContent: '$' + data.adjusted.toFixed(2), styles: {marginBottom: 12}})
+        ])
+        display.appendChild(items);
     });
     /**
      * Append form to root

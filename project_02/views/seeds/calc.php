@@ -3,7 +3,7 @@
      * Require Library
      * Enable Errors
      */
-    require_once '../../../../../src/shared-library/php/utils/utils-main.php';
+    require_once '../../src/php/utils/utils-main.php';
     require_once '../../src/request.php';
     /**
      * Constants
@@ -15,9 +15,13 @@
     $req = new Request('POST');
     $req->processForm(function($data, $errors){
         /**
-         * Calculate seed cost
+         * Calculate seed cost: 
+         * original: length * width * cost/lb
+         * adjusted: (length * width * cost/lb * 10%) + (length * width * cost/lb)
          */
-        $result['calc'] = $data['length'] * $data['width'] * 2.99;
+        $result['original'] = $data['length'] * $data['width'] * $data['seeds'];
+        $added = $result['original'] * 0.10;
+        $result['adjusted'] = $added + $result['original'];
         return array_merge($errors, $result);
     });
 ?>

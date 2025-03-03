@@ -7,6 +7,13 @@
 import { voidElements } from "../constants/constants.js";
 import { validateChildren, applyElementProps } from "./utils.js"; 
 /**
+ * @typedef {Object} HTMLProperties - HTML Element Properties
+ * @property {String} [name] - Name of HTML Element
+ * @property {String | Number} [value] - Value of HTML Element
+ * @property {Object} [styles] - Styles object for editing style object of
+ */
+
+/**
  * @function createElement
  * @param {String} tagName
  * @param {Object} properties

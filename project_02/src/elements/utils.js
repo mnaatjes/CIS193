@@ -71,13 +71,13 @@ export function applyElementProps(element, properties, mode='set'){
     /**
      * Check that style is not confused with styles in properties
      */
-    if(properties.hasOwnProperty('style')){
-        throw new Error('Incorrect property key name! Key for styling is "styles" NOT "style"!');
+    if(properties.hasOwnProperty('style') && properties.hasOwnProperty('styles')){
+        console.warn('Both "style" and "styles" properties used in creating element. Conflicts possible!');
     }
     /**
      * Destructure Attributes object
      */
-    const { id, styles, classList, textContent, pattern, innerHTML, ...attributes} = properties;
+    const { id, style, styles, classList, textContent, pattern, innerHTML, ...attributes} = properties;
     /**
      * Set Attributes
      */
@@ -103,9 +103,13 @@ export function applyElementProps(element, properties, mode='set'){
         /**
          * Validate and Apply Styles
          */
-        if(styles && typeof styles === 'object'){
-            appendStyles(element.style, styles);
+        const styleProps = {...styles, ...style};
+        if(typeof style === 'object' && typeof styles === 'object'){
+            /**
+             * TODO: Check for duplicate properties
+             */
         }
+        appendStyles(element.style, styleProps);
         /**
          * Validate and Apply pattern
          */
@@ -126,8 +130,18 @@ export function applyElementProps(element, properties, mode='set'){
          * Validate and apply attribs
          */
         if(attributes && typeof attributes === 'object' && Object.keys(attributes).length > 0){
-            for(const prop in attributes){
-                element.setAttribute(prop, attributes[prop]);
+            /**
+             * destructure attributes for special cases
+             */
+            const {novalidate, ...rest} = attributes;
+            /**
+             * Check novalidate values
+             */
+            if([undefined, false, 'false', null].includes(novalidate)){
+                element.setAttribute(novalidate, '');
+            }
+            for(const prop in rest){
+                element.setAttribute(prop, rest[prop]);
             }
         }
     }

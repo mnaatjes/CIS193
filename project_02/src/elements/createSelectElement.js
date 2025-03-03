@@ -1,21 +1,14 @@
-/**
- * @typedef {Object} HTMLProperties - HTML Element Properties
- * @property {String} [name] - Name of HTML Element
- * @property {String | Number} [value] - Value of HTML Element
- * @property {Object} [styles] - Styles object for editing style object of
- */
-
 import { createFormElement } from "./createFormElement.js";
 
 /**
  * @function createSelectElement
  * @param {Object} config - Configuration for element
  * @param {String} config.name - Name for Select element
- * @param {HTMLProperties} config.props - Properties for Select Element
+ * @param {import("./createElement.js").HTMLProperties} config.props - Properties for Select Element
  * @param {Object[]} options - Array of option element data
  * @param {String | Number} options.value - Value of option element
  * @param {String} options.text - Text for option element
- * @param {HTMLProperties} options.props - Properties object for option element
+ * @param {import("./createElement.js").HTMLProperties} options.props - Properties object for option element
  * @param {Object} properties - Properties for select element
  * @returns {HTMLElement} - returns select element with option children
  */

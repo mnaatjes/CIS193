@@ -163,8 +163,19 @@
                          * Trim
                          * Remove HTML Special Characters
                          */
-                        $value          = trim($value);
-                        $result[$key]   = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                        $value = trim($value);
+                        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                        /**
+                         * Check if string value is numeric
+                         */
+                        if(is_numeric($value)){
+                            if(filter_var($value, FILTER_VALIDATE_INT) !== false){
+                                $value = intval($value);
+                            } else if(filter_var($value, FILTER_VALIDATE_FLOAT) !== false){
+                                $value = floatval($value);
+                            }
+                        }
+                        $result[$key] = $value;
                     }
                 } else if(is_numeric($value)){
                     /**

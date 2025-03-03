@@ -8,6 +8,9 @@
  * @param {Object} formConfig
  * @returns {Object | Error}
  */
+
+import { createElement } from "../elements/createElement.js";
+
 /*----------------------------------------------------------*/
 function validateConfig(formConfig){
     /**
@@ -219,7 +222,7 @@ export function createCustomForm(formConfig={}, formElements=[], callback=undefi
                     method: config.method,
                     enctype: config.enctype,
                     target: config.target,
-                    novalidate: config.novalidate
+                    novalidate: undefined
                 }, 
                 config.styles,
                 elements
@@ -240,23 +243,36 @@ export function createCustomForm(formConfig={}, formElements=[], callback=undefi
         /*----------------------------------------------------------*/
         #buildForm(properties, styles, elementsList){
             /**
+             * Validate and add Styles | ClassList
+             */
+            if(typeof styles === 'object' && Object.keys(styles).length !== 0){
+                /**
+                 * Append Styles
+                 */
+                properties = {
+                    ...properties,
+                    styles
+                }
+            } else if (typeof styles === 'string'){
+                /**
+                 * Create a link to a stylesheet
+                 * Append link to shadowRoot
+                 */
+                const link  = document.createElement('link');
+                link.rel    = 'stylesheet';
+                link.type   = 'text/css';
+                link.href   = styles;
+                this.shadowRoot.appendChild(link);
+            }
+            /**
              * Create Form Element
+             * Check if styles is a string (filepath) or object of style properties
              */
-            const form = document.createElement('form');
-            /**
-             * Apply Form Attributes
-             */
-            for(const prop in properties){
-                form.setAttribute(prop, properties[prop]);
-            }
-            /**
-             * Append Elements to Form
-             */
-            if(Array.isArray(elementsList)){
-                elementsList.forEach(element => {
-                    form.appendChild(element);
-                });
-            }
+            const form = createElement(
+                'form',
+                properties,
+                elementsList
+            );
             /**
              * Check that form Contains Submit Button:
              * If not, append
@@ -279,27 +295,6 @@ export function createCustomForm(formConfig={}, formElements=[], callback=undefi
                 submit.type     = 'submit';
                 submit.value    = 'Submit';
                 form.appendChild(submit);
-            }
-            /**
-             * Validate and add Styles | ClassList
-             */
-            if(typeof styles === 'object' && Object.keys(styles).length !== 0){
-                /**
-                 * Append Styles
-                 */
-                for(const prop in styles){
-                    form.style[prop] = styles[prop];
-                }
-            } else if (typeof styles === 'string'){
-                /**
-                 * Create a link to a stylesheet
-                 * Append link to shadowRoot
-                 */
-                const link  = document.createElement('link');
-                link.rel    = 'stylesheet';
-                link.type   = 'text/css';
-                link.href   = styles;
-                this.shadowRoot.appendChild(link);
             }
             /**
              * Append Form to ShadowRoot
