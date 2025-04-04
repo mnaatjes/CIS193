@@ -1,0 +1,14 @@
+{
+    "fname": "Henry Rodriguez",
+    "room": 132,
+    "checkIn": "2010-05-18",
+    "checkOut": "2022-03-23",
+    "staff": 5,
+    "clean": 1,
+    "bed": 3,
+    "amenity": 2,
+    "quality": 4,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1401654690
+}

@@ -1,0 +1,14 @@
+{
+    "fname": "Anna Anderson",
+    "room": 114,
+    "checkIn": "2009-05-02",
+    "checkOut": "2023-03-10",
+    "staff": 4,
+    "clean": 4,
+    "bed": 4,
+    "amenity": 1,
+    "quality": 3,
+    "recommend": true,
+    "ready": true,
+    "timestamp": 1149971490
+}

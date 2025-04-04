@@ -43,8 +43,8 @@ const scale = Array.from({length:5}, (_, i) => {
  * Form Elements
  */
 const fname     = createInputElement('text', 'fname', {placeholder: 'Enter Full Name', required: true});
-const checkIn   = createInputElement('date', 'check-in', {required: true});
-const checkOut  = createInputElement('date', 'check-out', {required: true});
+const checkIn   = createInputElement('date', 'checkIn', {required: true});
+const checkOut  = createInputElement('date', 'checkOut', {required: true});
 const staff     = createRadioList('staff', 'Staff Friendliness', scale);
 const clean     = createRadioList('clean', 'Room Cleanliness', scale);
 const bed       = createRadioList('bed', 'Bed Comfort', scale);

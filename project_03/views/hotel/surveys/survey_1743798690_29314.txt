@@ -1,0 +1,14 @@
+{
+    "fname": "Joseph Davis",
+    "room": 107,
+    "checkIn": "2011-03-02",
+    "checkOut": "2009-09-30",
+    "staff": 1,
+    "clean": 5,
+    "bed": 5,
+    "amenity": 1,
+    "quality": 2,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1150057890
+}

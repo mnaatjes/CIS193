@@ -1,0 +1,14 @@
+{
+    "fname": "William Johnson",
+    "room": 124,
+    "checkIn": "2010-11-27",
+    "checkOut": "2017-04-27",
+    "staff": 2,
+    "clean": 3,
+    "bed": 3,
+    "amenity": 4,
+    "quality": 3,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1645738290
+}

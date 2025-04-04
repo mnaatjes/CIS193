@@ -1,0 +1,14 @@
+{
+    "fname": "John Smith",
+    "room": 113,
+    "checkIn": "2017-12-30",
+    "checkOut": "2013-08-10",
+    "staff": 1,
+    "clean": 1,
+    "bed": 3,
+    "amenity": 4,
+    "quality": 1,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1497299490
+}

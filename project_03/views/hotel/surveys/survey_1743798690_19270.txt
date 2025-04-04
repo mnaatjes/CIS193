@@ -1,0 +1,14 @@
+{
+    "fname": "George Jones",
+    "room": 116,
+    "checkIn": "2016-07-07",
+    "checkOut": "2005-01-13",
+    "staff": 2,
+    "clean": 1,
+    "bed": 3,
+    "amenity": 1,
+    "quality": 5,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1681677090
+}

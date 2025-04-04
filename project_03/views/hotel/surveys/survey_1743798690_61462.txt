@@ -1,0 +1,14 @@
+{
+    "fname": "Thomas Garcia",
+    "room": 104,
+    "checkIn": "2019-05-01",
+    "checkOut": "2006-09-06",
+    "staff": 1,
+    "clean": 4,
+    "bed": 4,
+    "amenity": 5,
+    "quality": 3,
+    "recommend": false,
+    "ready": true,
+    "timestamp": 1145737890
+}
