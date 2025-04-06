@@ -1,3 +1,3 @@
 <?php
-    define('PATH', '../../../../../src/shared-library/php/');
+    define('PATH', './php/');
 ?>

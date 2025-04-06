@@ -1,0 +1,14 @@
+{
+    "fname": "James Williams",
+    "room": 130,
+    "checkIn": "2022-11-27",
+    "checkOut": "2022-11-01",
+    "staff": 5,
+    "clean": 2,
+    "bed": 1,
+    "amenity": 4,
+    "quality": 2,
+    "recommend": true,
+    "ready": false,
+    "timestamp": 1450151403
+}

@@ -1,0 +1,14 @@
+{
+    "fname": "Emma Taylor",
+    "room": 148,
+    "checkIn": "2023-08-19",
+    "checkOut": "2017-07-01",
+    "staff": 4,
+    "clean": 3,
+    "bed": 1,
+    "amenity": 4,
+    "quality": 3,
+    "recommend": true,
+    "ready": true,
+    "timestamp": 1599619803
+}

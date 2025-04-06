@@ -1,0 +1,14 @@
+{
+    "fname": "Margaret Moore",
+    "room": 121,
+    "checkIn": "2015-12-27",
+    "checkOut": "2009-09-15",
+    "staff": 1,
+    "clean": 5,
+    "bed": 3,
+    "amenity": 3,
+    "quality": 2,
+    "recommend": true,
+    "ready": false,
+    "timestamp": 1639972203
+}

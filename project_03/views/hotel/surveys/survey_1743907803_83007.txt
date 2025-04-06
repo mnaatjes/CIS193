@@ -1,0 +1,14 @@
+{
+    "fname": "Thomas Garcia",
+    "room": 122,
+    "checkIn": "2008-07-11",
+    "checkOut": "2018-12-22",
+    "staff": 1,
+    "clean": 4,
+    "bed": 2,
+    "amenity": 3,
+    "quality": 3,
+    "recommend": true,
+    "ready": false,
+    "timestamp": 1551671403
+}

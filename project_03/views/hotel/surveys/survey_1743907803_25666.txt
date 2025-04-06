@@ -1,0 +1,14 @@
+{
+    "fname": "Ida Martin",
+    "room": 102,
+    "checkIn": "2018-11-03",
+    "checkOut": "2019-12-09",
+    "staff": 4,
+    "clean": 2,
+    "bed": 1,
+    "amenity": 2,
+    "quality": 3,
+    "recommend": false,
+    "ready": true,
+    "timestamp": 1642218603
+}

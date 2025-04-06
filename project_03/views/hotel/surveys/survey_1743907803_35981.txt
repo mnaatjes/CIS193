@@ -1,0 +1,14 @@
+{
+    "fname": "Mary Martinez",
+    "room": 138,
+    "checkIn": "2019-10-20",
+    "checkOut": "2024-02-28",
+    "staff": 4,
+    "clean": 4,
+    "bed": 5,
+    "amenity": 5,
+    "quality": 1,
+    "recommend": false,
+    "ready": true,
+    "timestamp": 1241405403
+}

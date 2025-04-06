@@ -1,0 +1,14 @@
+{
+    "fname": "Sarah White",
+    "room": 127,
+    "checkIn": "2014-03-31",
+    "checkOut": "2022-02-04",
+    "staff": 5,
+    "clean": 2,
+    "bed": 2,
+    "amenity": 1,
+    "quality": 2,
+    "recommend": false,
+    "ready": true,
+    "timestamp": 1703649003
+}

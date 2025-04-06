@@ -1,0 +1,14 @@
+{
+    "fname": "Robert Wilson",
+    "room": 148,
+    "checkIn": "2018-04-15",
+    "checkOut": "2006-03-08",
+    "staff": 2,
+    "clean": 2,
+    "bed": 2,
+    "amenity": 5,
+    "quality": 3,
+    "recommend": false,
+    "ready": false,
+    "timestamp": 1120877403
+}

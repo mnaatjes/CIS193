@@ -1,0 +1,14 @@
+{
+    "fname": "Charles Brown",
+    "room": 125,
+    "checkIn": "2006-05-22",
+    "checkOut": "2006-04-11",
+    "staff": 4,
+    "clean": 3,
+    "bed": 4,
+    "amenity": 5,
+    "quality": 4,
+    "recommend": true,
+    "ready": false,
+    "timestamp": 1346899803
+}

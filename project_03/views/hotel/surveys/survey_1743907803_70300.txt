@@ -1,0 +1,14 @@
+{
+    "fname": "Alice Jackson",
+    "room": 131,
+    "checkIn": "2007-03-27",
+    "checkOut": "2020-12-23",
+    "staff": 4,
+    "clean": 3,
+    "bed": 4,
+    "amenity": 1,
+    "quality": 3,
+    "recommend": true,
+    "ready": true,
+    "timestamp": 1599965403
+}

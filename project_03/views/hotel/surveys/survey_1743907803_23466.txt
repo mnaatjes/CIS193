@@ -1,0 +1,14 @@
+{
+    "fname": "Elizabeth Thomas",
+    "room": 105,
+    "checkIn": "2024-02-05",
+    "checkOut": "2006-09-24",
+    "staff": 2,
+    "clean": 3,
+    "bed": 2,
+    "amenity": 5,
+    "quality": 4,
+    "recommend": false,
+    "ready": true,
+    "timestamp": 1249095003
+}

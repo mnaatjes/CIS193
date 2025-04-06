@@ -1,0 +1,208 @@
+/**
+*   Palindrome Checker
+*/
+/**
+*   Root
+*/
+:root{
+    --main-bg-color: #fdfdfd;
+    --primary-text-color: #414141;
+    --secondary-text-color: #474747;
+    --main-font-family: 'Times New Roman', Times, serif;
+    --secondary-font-family: Helvetica, sans-serif;
+    --main-font-size: 16px;
+    --nav-font-size: 0.8rem;
+    --main-border-color: #999;
+    --secondary-border-color: #ccc;
+    --min-width: 340px;
+    --active-text-color: hsl(219, 79%, 50%);;
+}
+/**
+*   All, Body
+*/
+* {
+    box-sizing: border-box;
+}
+body {
+    /*POSITION*/
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /*DISPLAY*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*TEXT*/
+    font-size: var(--main-font-size);
+}
+/**
+*   Semantic
+*/
+header, main {
+    width: 100%;
+    min-width: var(--min-width);
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+/**
+*   Nav
+*/
+nav {
+    /*POSITION*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    /*DISPLAY*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*BORDER-BKRND*/
+    border-bottom: 1px solid var(--secondary-border-color);
+    /*TEXT*/
+    font-family: var(--secondary-font-family);
+    font-size: var(--nav-font-size);
+    color: var(--secondary-text-color);
+}
+nav ul {
+    /*POSITION*/
+    margin: 0;
+    padding: 0;
+    /*DISPLAY*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li {
+    /*POSITION*/
+    margin: 0 1rem;
+    /*TEXT*/
+    color: var(--primary-text-color);
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+nav ul li a {
+    /*TEXT*/
+    color: var(--primary-text-color);
+    text-decoration: none;
+}
+nav ul li a:hover {
+    /*TEXT*/
+    color: var(--active-text-color);
+}
+/**
+*   Header
+*/
+header {
+    margin-top: 50px;
+}
+header p {
+    font-family: var(--secondary-font-family);
+    color: var(--secondary-text-color);
+    line-height: 1.2rem;
+    font-size: var(--nav-font-size);
+}
+header div.phonetic {
+    /*POSITION*/
+    margin: 0;
+    padding: 0;
+    /*TEXT*/
+    font-size: 1.2rem;
+    color: var(--primary-text-color);
+}
+header ol li {
+    /*POSITION*/
+    margin: 1rem 0;
+    padding: 0;
+    /*TEXT*/
+    font-family: var(--secondary-font-family);
+    font-size: var(--main-font-size);
+    color: var(--primary-text-color);
+}
+header ol li sup,
+header p sup {
+    /*TEXT*/
+    font-size: 0.7rem;
+    color: var(--active-text-color);
+}
+header cite a {
+    /*TEXT*/
+    color: var(--active-text-color);
+    font-size: var(--nav-font-size);
+    text-decoration: none;
+}
+header cite a:hover {
+    /*TEXT*/
+    color: var(--active-text-color);
+    text-decoration: underline;
+}
+/**
+*   Main
+*/
+main {
+    /*POSITION*/
+    height: 100%;
+    /*DISPLAY*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+main input[type="text"],
+main #display {
+    /*RESET*/
+    outline: none;
+    /*POSITION*/
+    margin: 0 0;
+    padding: 0.8rem 1.2rem;
+    /*BORDER-BKRND*/
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--secondary-border-color);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    /*TEXT*/
+    font-size: var(--main-font-size);
+    color: var(--primary-text-color);
+    font-family: var(--secondary-font-family);
+}
+main input[type="text"]:hover,
+main input[type="text"]:focus {
+    /*BORDER-BKRND*/
+    border: 1px solid var(--main-border-color);
+}
+/**
+*   Footer
+*/
+footer {
+    /*POSITION*/
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    /*BORDER-BKRND*/
+    background-color: var(--primary-text-color);
+    /*TEXT*/
+    font-size: 12px;
+    color: var(--main-bg-color);
+    text-align: center;
+    font-family: var(--secondary-font-family);
+}
+/**
+*   Headings
+*/
+h1, h2, h3, h4, h5, h6 {
+    /*POSITION*/
+    margin: 1rem 0;;
+    /*TEXT*/
+    font-family: var(--main-font-family);
+    color: var(--primary-text-color);
+}
+h1 {
+    font-size: 2.5rem;
+}

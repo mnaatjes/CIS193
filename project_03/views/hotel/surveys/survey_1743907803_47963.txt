@@ -1,0 +1,14 @@
+{
+    "fname": "Bertha Thompson",
+    "room": 145,
+    "checkIn": "2016-05-18",
+    "checkOut": "2005-05-21",
+    "staff": 4,
+    "clean": 5,
+    "bed": 1,
+    "amenity": 4,
+    "quality": 5,
+    "recommend": true,
+    "ready": false,
+    "timestamp": 1549770603
+}

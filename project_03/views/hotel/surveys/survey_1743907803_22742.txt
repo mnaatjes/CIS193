@@ -1,0 +1,14 @@
+{
+    "fname": "Frank Miller",
+    "room": 121,
+    "checkIn": "2015-08-03",
+    "checkOut": "2022-06-04",
+    "staff": 1,
+    "clean": 1,
+    "bed": 5,
+    "amenity": 4,
+    "quality": 1,
+    "recommend": true,
+    "ready": true,
+    "timestamp": 1476327003
+}
